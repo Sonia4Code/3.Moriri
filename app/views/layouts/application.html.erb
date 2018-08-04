@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MORIRI</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Work+Sans" rel="stylesheet"> 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css">
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <div class="container-fluid" id="navbar">
+      <div class="row" id=nav>
+        <div class="col-4" id="lgo"><%= link_to(image_tag("logo_avatar.png", class:"brands", id: "logo", title: "Home", class:"img-fluid"), root_path) %></div>
+        <div class="col-4" id="wordmark"><%= image_tag("wordmark.png", id: "wordmark", class:"img-fluid") %></div>
+    <!-- dropdown start -->
+        <div class="col-4" id="avtr">
+          <div class="btn-group dropleft">
+            <a class="nav-link dropdown-toggle" href id="navDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <span class="navbar-toggler-icon">
+                <% if current_user %>
+                  <%= image_tag(current_user.avatar, class: "img-nav", id: "avatar", title: "Menu") %>         
+                <% else %> 
+                  <span style="font-family: 'Arvo', serif; font-size: 1em;color:#FBF5F5"> Welcome! </span>
+                <% end %>
+              </span>
+            </a>
+          <div class="dropdown-menu" aria-labelledby="navDropdown">
+            <% if current_user %>
+              <span style="color: #FBF5F5"><%= link_to "My Profile", '/profile', class:"dropdown-item" %></span>
+              <span style="color: #FBF5F5"><%= link_to "Find Salon", '/salons', class:"dropdown-item" %></span>
+                <% if can? :create, @salon %>
+                  <%= link_to "List Salon", new_salon_path, class:"dropdown-item" %>
+                <% end %>
+                  <span style="color: #FBF5F5"><%= link_to "Log Out", '/logout', class:"dropdown-item" %></span>  
+                <% else %>
+                  <span style="color: #FBF5F5"><%= link_to "Sign in with Google", "/auth/google_oauth2", id: "sign_in", class:"dropdown-item" %></span>
+                  <span style="color: #FBF5F5"><%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in", class:"dropdown-item" %></span>
+                <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="footer">
+    <p></p>
+    </div>
+
+
+    <div id="flash">
+      <% flash.each do |key, value| -%>
+        <% if key == "success"%>
+          <div id="flash_<%= key %>" class="alert alert-success" role="alert"><%=h value %></div>
+        <% else %>
+          <div id="flash_<%= key %>" class="alert alert-danger" role="alert"><%=h value %></div>
+        <% end %>
+      <% end %>
+    </div>
+
+      <%= yield %>
+    </body>
+</html>

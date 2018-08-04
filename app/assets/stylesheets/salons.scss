@@ -1,0 +1,215 @@
+
+
+/* SEARCH */
+.search {
+	text-align: center;
+}
+
+.search_field {
+  border-radius: 5px;
+  max-width: 14vw;
+  width: 100%;
+}
+
+
+div#search.container-fluid{
+	position: relative;
+	margin-top: 7%;
+	display: flex-inline;
+	align-items: center;
+}
+
+div.search{
+	height: 100%;
+	max-height:100vh;
+}
+
+input.btn{
+/*    max-width: 5vw;
+    width: 100%;*/
+    height: 100%;
+    max-height:100vh;
+}
+
+/*RESPONSIVE STACKING OF SEARCH FIELDS*/
+/*@media screen and (max-width: 600px) {
+    input.search_field, input[type=submit] {
+        width: 100%;
+        margin-top: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center'
+    }
+}
+*/
+
+/*// * FORM **/
+
+div#search_list.container-fluid.mt-4{
+  position: relative;
+  clear: both;
+  z-index: -1;
+  width: 100%;
+ max-width:100vw;
+}
+
+div.container-new {
+  border-radius: 15px;
+  border: 1px solid rgba(0, 0, 0, 0.125)
+}
+
+div.sal_head {
+  background: image-url('pattern.png');
+  border: solid 3px #0E2A36;
+  height: 100%;
+  padding-top: 0px;
+  text-align: center;
+  vertical-align: middle;
+  }
+
+a#search_link{
+  height:100%;
+  vertical-align: middle;
+  padding:0;
+  margin:0;
+
+}
+
+/* FORM NEW AND EDIT PAGE*/
+.form_label {
+  width: 25%;
+  padding: 0px 0px 0px 0px;
+  margin-left: 0px;
+  text-align: right;
+  font-weight: bold;
+}
+
+.form_input {
+  width: 70%;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+.thead{
+  width: 100%;
+  margin-bottom: 0px;
+}
+
+table.table {
+  margin-bottom: 0px;
+
+  /*border: solid 1px #0E2A36;*/
+  /*background: image-url('pattern.png');*/
+}
+
+#speciality {
+  /*width: 40%;*/
+  text-align: center;
+  margin-bottom: 0px;
+  margin-bottom: 0px;
+}
+
+.speciality {
+  /*width: 20%;*/
+  text-align: left;
+  margin-bottom: 0px;
+}
+
+.submit {
+  text-align: center;
+  padding-right: 200px;
+  padding-left: 200px;
+  padding-top: 0px;
+}
+
+input.btn {
+  max-width: 30%;
+  padding: 0px 0px 0px 0px;
+  background-color:  #0E2A36;
+  color: white;
+  max-height: 40px;
+}
+
+div.container-new{
+  border: solid 2px #0E2A36;
+  padding-top: 10px;
+}
+/*// * DISPLAY CARD **/
+h1 {
+  color: black;
+  text-align: center;
+}
+
+.card {
+  border-radius: 10px;
+}
+
+h3 {
+  padding-right: 50px;
+  padding-left: 150px;
+}
+
+.sal_head {
+  background: image-url('pattern.png');
+  text-align: center;
+  border-radius: 5px;
+}
+
+.sal_card {
+  text-align: center;
+}
+
+
+// * PAGINATION *
+a.page-link {
+  background-color: white;
+  border: 0px;
+  color: black;
+  text-align: center;
+  text: 5px;
+  font-weight: bold;
+  border: solid 2px #0E2A36;
+}
+
+a.page-link:hover {
+  background-color: #0E2A36;
+  color: white;
+}
+
+li.page-item.active a.page-link {
+  background: image-url('pattern.png');
+  color: black;
+  border: solid 3px #0E2A36;
+  
+}
+
+/* SHOW PAGE*/
+
+div#show_page.container-fluid{
+  height: 100%;
+  max-height: 100vh;
+  margin-top: 5%;
+  /*display: flex;*/
+  /*align-items: center;*/
+  /*justify-content: center;*/
+  position: fixed;
+  text-align: center;
+
+}
+
+div.col-6{
+  border: solid 2px #0E2A36;
+  width: 100%;
+}
+
+div#show_page.container{
+  margin: 10%;
+}
+
+
+/* EDIT PAGE*/
+div#edit.container-fluid{
+  margin-top: 5%;
+}
+
+

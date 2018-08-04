@@ -1,0 +1,9 @@
+<div class= "container-fluid" id="edit" style="width: 100%; padding-top: 25px;">
+      <div class="card-body" style = " padding: 2%" >
+      	<div class= 'sal_head' id="header" style="font-family: 'Oswald',serif;font-size: 20px ;color: white; text-shadow:-1px -1px 0 #0E2A36, 1px -1px 0 #0E2A36,-1px 1px 0 #0E2A36, 1px 1px 0 #0E2A36;">New Salon</div>
+         <%= form_for @salon do |f| %>
+         <%= render partial: '/salons/form', :locals => {:f => f } %>  
+         <div class= "submit mt-2"><%= f.submit class: "btn" %></div>
+         <% end %>
+      </div>
+ </div>

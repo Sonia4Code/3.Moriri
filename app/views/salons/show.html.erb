@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+       #map {
+        height: 400px;
+        width: 100%;
+       }
+    </style>
+  </head>
+  <body>
+
+
+<div class="container" id="show_page">
+    <div class="column">
+           <div class="card  w-100" style = " border: 1px solid #0E2A36">
+        <div>
+            <div class= 'sal_head' id="header" style="font-family: 'Oswald',serif;font-size: 20px ;color: white; text-shadow:-1px -1px 0 #0E2A36, 1px -1px 0 #0E2A36,-1px 1px 0 #0E2A36, 1px 1px 0 #0E2A36;"><%= @salon.business_name %></div>
+            <p class= 'sal_card'><strong>Country</strong><br><%= @salon.country %></p>
+            <p class= 'sal_card'><strong>City</strong><br><%= @salon.location %> </p>
+            <p class= 'sal_card'><strong>Area</strong><br><%= @salon.suburb %> </p>
+            <p class= 'sal_card'><strong>Speciality</strong><br><%= @salon.speciality * "," %></p>
+          <span>
+            <div class="row">
+              <div class= "col">
+                <%# if can? :update, @salon %>
+                <%= button_to "Edit", edit_salon_path(@salon), :method => "get", class: "btn" %>
+                <%#end %>
+              </div>
+              <div class= "col">
+                <%#if can? :destroy, @salon %>
+                <%= button_to "Delete", @salon, :method => "delete", class: "btn" %>
+                <%# end %>
+              </div>
+              <div class= "col">
+                <%= button_to "All Salons", '/salons', :method => "get", class: "btn" %>
+                <%#= button_to "View Salons", @salon, :method => "delete", class: "btn" %>
+                <%#= link_to "Back to Salons", '/salons', :method => "get", class: "btn" %>
+              </div>
+
+            </div>
+            </span>                       
+        </div>
+      </div>
+      </div>
+        </div>
+    <div class="column">
+             <div class="card w-100 mt-5" style = " padding: 2%">
+      <div id="map" class="wrapper-xs"></div>
+      </div>
+    </div>
+    </div>    
+  </div>
+        </div>
+  </div>
+       
+
+
+<script type="text/javascript">
+  function initMap() {
+    var geocoder = new google.maps.Geocoder();
+    geocoder.geocode({"address":"<%=@salon.address%><%=@salon.location%>"}, function(result, status){
+      var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 4, 
+        center: result[0].geometry.location
+      })
+      var marker = new google.maps.Marker({
+        position: result[0].geometry.location,
+        map: map
+      });
+    })
+  }
+</script>
+
+  <script async defer
+  src="https://maps.googleapis.com/maps/api/js?key=<%=ENV['GOOGLE_API_KEY']%>&callback=initMap">
+</script>
+  </body>
+</html>

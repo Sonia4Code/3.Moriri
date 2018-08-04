@@ -1,0 +1,82 @@
+<div class="wrapper">
+  <div class= "container margin-bot">
+    <div class="row">
+      <div class="col-4"></div>
+      <div class="col-4 mt-5">
+            <p id = "image"><%= image_tag current_user.avatar, :class => 'avatar'%></p>
+      </div>
+      <div class="col-4"></div>
+    </div>
+    <div class="row">
+      <div class="col-4"></div>
+      <div class="col-4">
+        <div class="card w-100 mx-auto">
+          <h1 class = "profile"><strong><%= current_user.first_name %> <%= current_user.last_name %></strong></h1>
+          <p class = "mx-auto mt-0">Joined: <%= current_user.created_at.strftime("%B") %> <%= current_user.created_at.strftime("%Y") %></p>
+          <div>
+            <% if current_user.role == "client" %>
+              <div class = "row">
+                <div class = "col">
+                  <%#= link_to "Are you a salon owner?", edit_profile_path %>
+                  <%= form_for current_user do |f| %>
+                  I own a salon:   
+                </div>
+                <div class = "col">
+                  <!-- <%#= f.check_box :role, {multiple: true}, "Yes", nil %>Yes<br> -->
+                  <%= f.label :role, 'Yes', :value => 'owner' %>
+                  <%= f.radio_button :role, 'owner' %> 
+                  <%= f.label :role, 'No', :value => 'client' %>
+                  <%= f.radio_button :role, 'client' %> 
+                </div>
+                <div class = "col">
+                  <%= f.submit "Update", class: "btn btn-large btn-dark" %>
+                </div>
+              <div>
+            <% end %>
+            <div class = "row">
+          <% else %>
+          <%# elsif current_user.role == "owner" || "super_admin" %>
+            <%#= link_to "List your Salon", new_salon_path %>
+        <!-- Large modal -->
+          <div id="prolist" class="mb-3"><button type="button" class="btn mb-0" data-toggle="modal" data-target=".bd-example-modal-lg">
+          List Salon</button></div>
+          <!-- Modal -->
+          <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document"  >
+              <div class="modal-content" style="width:600px;">
+                <div class="modal-header">
+                  <h2 class="modal-dialog modal-lg">New Salon</h2>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <%= form_for(@salon, url: salons_path) do |f| %>
+                    <%= render partial: '/salons/form', :locals => {:f => f } %>
+                    <div class="submit"><%= f.submit "List Salon", method:"post", id:"submit" %></div>
+                  <% end %>
+
+                </div>
+                  <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- end of modal -->
+            <div id="listed"><p> You have listed the following salons: </p>
+            <ul>
+              <% @salons.each do |salon| %>
+             <li> <%= link_to salon.business_name, salon_path(salon) %></li>
+              <% end %>
+            </ul>
+          <% end %>
+          </div>
+        </div>
+      <div class="col-4"></div>
+    </div>
+    </div>    
+  </div>
+</div>
+
+
+

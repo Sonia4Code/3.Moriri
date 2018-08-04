@@ -1,0 +1,18 @@
+  <div class="container-fluid" id="search">
+  <div class="container" id="search_row">
+    <div class="search">
+        <%= form_tag salons_search_path, id: "search-form", method: :post, remote: true do %>
+         <%= text_field_tag :country, params[:country], placeholder: ' Country', class:"search_field" %> 
+         <%= text_field_tag :location, params[:location], placeholder: ' City', class:"search_field" %> 
+         <%= text_field_tag :suburb, params[:suburb], placeholder: ' Area', class:"search_field" %> 
+         <%= submit_tag "Search", name: nil, class:"btn" %>
+        <% end %>
+    </div>
+  </div>
+    <!-- <div class= "page_top mt-3 py-0"><%#= paginate @salons %></div> -->
+  <div class="container-fluid mt-4" id ="search_list" >
+    <%= render partial: '/salons/display', object: @salons %>
+  </div>
+    <div class= "page pt-4"><%= paginate @salons %></div>
+  </div>
+

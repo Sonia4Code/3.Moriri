@@ -1,0 +1,22 @@
+<!-- DISPLAY -->
+<% @salons.in_groups_of(4,false).each do|group| %> 
+  <div class="row">
+    <%group.each do|salon|%>
+      <div class="card  w-25" style = " border: 1px solid #0E2A36">
+        <div>
+          <div class= 'sal_head' id="header" style="font-family: 'Oswald',serif;font-size: 20px ;color: white; text-shadow:-1px -1px 0 #0E2A36, 1px -1px 0 #0E2A36,-1px 1px 0 #0E2A36, 1px 1px 0 #0E2A36;">
+            <%= link_to salon.business_name, salon_path(salon) %>
+          </div>
+          <p class= 'sal_card'><strong>Country</strong><br><%= salon.country %></p>
+          <p class= 'sal_card'><strong>City</strong><br><%= salon.location %> </p>
+          <p class= 'sal_card'><strong>Area</strong><br><%= salon.suburb %> </p>
+          <p class= 'sal_card'><strong>Speciality</strong><br><%= salon.speciality * "," %></p>
+          <!-- <p class= 'sal_card'><strong>Created_by: </strong><br><%#= salon.user_id %> </p> -->
+        </div>
+      </div>
+    <%end%> 
+  </div>
+<%end%>
+
+
+
